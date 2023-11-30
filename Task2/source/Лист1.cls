@@ -10,14 +10,13 @@ Attribute VB_Exposed = True
 Option Explicit
 
 Private Sub Worksheet_Activate()
-    Dim size As Integer
-    size = 0
+    Dim arr(0 To 19) As String
     Dim unit As range
     Set unit = Cells(2, 1)
-    Do While unit.Value <> ""
-        size = size + 1
-        Set unit = unit.Offset(1, 0)
-    Loop
+    For i as Integer = 1 To 19
+    arr [Index] = unit.Value
+    Set unit = unit.Offset(1, 0)
+    Next
     MsgBox (size)
 End Sub
 
