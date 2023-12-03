@@ -24,12 +24,11 @@ Private Sub Worksheet_Activate()
     '    ListBox1.AddItem (Cells(range_start.Row + index, range_start.Column).Value)
         
     'Next
-    ListBox1.RowSource = "Sheet1!" + Replace(range_start.Address, "$", "") + ":" + Replace(range_end.Address, "$", "")
-    'MsgBox ("!Sheet1" + range_start.Address + ";;;" + range_end.Address)
     Dim str As String
-    str = range_start.Address
-    str = Replace(str, "$", "")
-    MsgBox (str)
+    str = Replace(range_start.Address, "$", "") & ":" & Replace(range_end.Address, "$", "")
+    MsgBox str
+    ListBox1.RowSource = "'Sheet1'!" & Replace(range_start.Address, "$", "") & ":" & Replace(range_end.Address, "$", "")
+    'MsgBox ("!Sheet1" + range_start.Address + ";;;" + range_end.Address)
 End Sub
 
 Private Sub Worksheet_SelectionChange(ByVal Target As Range)
