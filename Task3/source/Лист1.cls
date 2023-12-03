@@ -12,23 +12,18 @@ Public range_start As Range
 Public range_end As Range
 
 Private Sub ListBox1_Click()
-    Cells(5, 5).Value = ListBox1.Selected
+    Cells(5, 5).Value = ListBox1.Value
 End Sub
 
 Private Sub Worksheet_Activate()
     Set range_start = Cells(1, 1)
     Set range_end = range_start.End(xlDown)
     
-    'Dim index As Integer
-    'For index = range_start.Row To range_end.Row
-    '    ListBox1.AddItem (Cells(range_start.Row + index, range_start.Column).Value)
+    Dim index As Integer
+    For index = range_start.Row To range_end.Row
+        ListBox1.AddItem (Cells(range_start.Row + index, range_start.Column).Value)
         
-    'Next
-    Dim str As String
-    str = Replace(range_start.Address, "$", "") & ":" & Replace(range_end.Address, "$", "")
-    MsgBox str
-    ListBox1.RowSource = "'Sheet1'!" & Replace(range_start.Address, "$", "") & ":" & Replace(range_end.Address, "$", "")
-    'MsgBox ("!Sheet1" + range_start.Address + ";;;" + range_end.Address)
+    Next
 End Sub
 
 Private Sub Worksheet_SelectionChange(ByVal Target As Range)
