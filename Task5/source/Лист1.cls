@@ -10,12 +10,18 @@ Attribute VB_Exposed = True
 Option Explicit
 Public start_ As Range
 Public end_ As Range
-Private elements() As elements
+Private elements_arr() As elements
+
+Private Sub CommandButton1_Click()
+    UserForm1.Show
+    Call UserForm1.AddElementsToList(elements_arr)
+    
+End Sub
 
 Private Sub Worksheet_Activate()
     Set start_ = Cells(1, 1)
     Set end_ = start_.End(xlDown)
-    ReDim elements(end_.Row - (start_.Row - 1))
+    ReDim elements_arr(end_.Row - (start_.Row - 1))
     
     Dim index As Integer
     For index = start_.Row - 1 To end_.Row
@@ -28,7 +34,7 @@ Private Sub Worksheet_Activate()
         Set element.address = range_element
         Set element.sheet_on_address = ActiveSheet
                 
-        Set elements(index) = element
+        Set elements_arr(index) = element
     Next
 End Sub
 
