@@ -1,7 +1,7 @@
 Attribute VB_Name = "Module1"
 Option Explicit
 
-Public Function GetArrayElements()
+Public Function GetArrayElements() As element()
     Dim this_sheet As Worksheet
     Set this_sheet = ThisWorkbook.Worksheets("Елементы")
     
@@ -18,10 +18,12 @@ Public Function GetArrayElements()
     For index = LBound(elements) To UBound(elements)
         Dim index_range As Range
         Set index_range = this_sheet.Cells(start_.Row + index, start_.Column)
-    
+        
         Set element = New element
-        Set element = element.Constructor(index_range.Value, index_range.Offset(0, 1).Value, index_range, this_sheet)
+        element.Constructor name:=index_range.Value, price:=index_range.Offset(0, 1).Value, address:=index_range, sheet:=this_sheet
         
         Set elements(index) = element
     Next
+    
+    GetArrayElements = elements
 End Function

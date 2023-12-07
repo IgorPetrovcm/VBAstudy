@@ -14,13 +14,9 @@ Public price As Double
 Public address As Range
 Public sheet As Worksheet
 
-Public Function Constructor(name As String, price As Double, address As Range, sheet As Worksheet) As element
-    Dim element As element
-    Set element = New element
-    element.name = name
-    element.price = price
-    element.address = address
-    element.sheet = sheet
-    
-    Set Constructor = element
-End Function
+Public Sub Constructor(name As String, price As Double, address As Range, sheet As Worksheet)
+    Me.name = name
+    Me.price = price
+    Me.address = address
+    Me.sheet = sheet
+End Sub
