@@ -20,7 +20,11 @@ Public Function GetArrayElements() As element()
         Set index_range = this_sheet.Cells(start_.Row + index, start_.Column)
         
         Set element = New element
-        element.Constructor name:=index_range.Value, price:=index_range.Offset(0, 1).Value, address:=index_range, sheet:=this_sheet
+        
+        element.name = index_range.Value
+        element.price = index_range.Offset(0, 1).Value
+        Set element.address = index_range
+        Set element.sheet = this_sheet
         
         Set elements(index) = element
     Next
