@@ -17,8 +17,21 @@ Option Explicit
 
 Private elements() As element
 
-Private Sub ListBox1_Click()
+
+Private Sub ListBox1_AfterUpdate()
+    Dim name_element As String
+    name_element = Me.ListBox1
     
+    Dim index As Integer
+    For index = LBound(elements) To UBound(elements)
+        If elements(index).name = name_element Then
+            TextBox1.Value = elements(index).price
+        End If
+    Next
+End Sub
+
+Private Sub ListBox1_Click()
+
 End Sub
 
 Private Sub UserForm_Activate()
