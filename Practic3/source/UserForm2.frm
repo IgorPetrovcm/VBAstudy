@@ -17,7 +17,7 @@ Option Explicit
 
 
 Private Sub UserForm_Activate()
-
+    TextBox2.Value = UserForm1.TextBox1.Value
 End Sub
 
 Private Sub UserForm_Click()

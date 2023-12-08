@@ -36,8 +36,6 @@ Private Sub ListBox1_Click()
 End Sub
 
 Private Sub ListBox1_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
-    Dim elements As element
-    element = Module2.GetCounting(ListBox1.List(ListBox1.ListIndex), elements)
     UserForm2.Show
     UserForm2.TextBox1.Value = ListBox1.List(ListBox1.ListIndex)
 End Sub
