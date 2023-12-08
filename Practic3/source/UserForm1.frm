@@ -32,16 +32,25 @@ End Sub
 
 Private Sub ListBox1_Click()
 
+
+End Sub
+
+Private Sub ListBox1_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
+    Dim elements As element
+    element = Module2.GetCounting(ListBox1.List(ListBox1.ListIndex), elements)
+    UserForm2.Show
+    UserForm2.TextBox1.Value = ListBox1.List(ListBox1.ListIndex)
 End Sub
 
 Private Sub UserForm_Activate()
     elements = Module1.GetArrayElements()
 
-    
-    Dim index As Integer
-    For index = LBound(elements) To UBound(elements)
-        ListBox1.AddItem (elements(index).name)
-    Next
+    If Me.ListBox1.ListCount = 0 Then
+        Dim index As Integer
+        For index = LBound(elements) To UBound(elements)
+            ListBox1.AddItem (elements(index).name)
+        Next
+    End If
     
 End Sub
 
